@@ -29,12 +29,14 @@ import ReadList from "../Pages/readList/ReadList";
           },
           {
             path:'readList',
+            loader: ()=> fetch('../booksData.json'),
             Component:ReadList
           },
           {
             path:'pagesToRead',
+            loader: ()=> fetch('../booksData.json'),
             Component:PagesToRead,
-            errorElement:<p>Error pagesToRead</p>,
+           
           }
       ]
     },

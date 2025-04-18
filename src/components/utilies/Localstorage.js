@@ -8,21 +8,22 @@ export const getItemLocalStorage = ()=>{
     }
 }
 
-export const saveToLocalStorage = id =>{
-
-const convertString = JSON.stringify(id);
-
+export const saveToLocalStorage = storedBookData =>{
+const convertString = JSON.stringify(storedBookData);
 localStorage.setItem('readList', convertString)
 
 }
 
 export const addToLocalStorage = (id) =>{
     
-    const card = getItemLocalStorage()
-    if(!card.includes(id)){
-        card.push(id)
+    const storedBookData = getItemLocalStorage()
+    if(storedBookData.includes(id)){
+        alert('already this item exites')
+        
+    }else{
+        storedBookData.push(id)
     }
-    saveToLocalStorage(card)
+    saveToLocalStorage(storedBookData)
    
  
 

@@ -11,6 +11,10 @@ const BookDetails = () => {
     const findOutBook = books.find(
       (singleBook) => singleBook.bookId === convertIdNumber
     );
+
+    const handleReadButton = id =>{
+         addToLocalStorage(id)
+    }
   
   
   
@@ -53,8 +57,8 @@ const BookDetails = () => {
             <p>Publisher: <span className="font-bold">{publisher}</span></p>
             <p>Year of publishing: <span className="font-bold">{yearOfPublishing}</span></p>
             <p>Rating: <span className="font-bold">{rating}</span></p>
-            <Link><button onClick={()=>addToLocalStorage(bookId)} className="btn mr-3 ">Read</button></Link>
-            <Link><button className="btn btn-accent">WishList</button></Link>
+            <button onClick={()=>handleReadButton(bookId)} className="btn mr-3 ">Read</button>
+            <button className="btn btn-accent">WishList</button>
           </div>
         </div>
       </div>
