@@ -3,27 +3,38 @@ import {
   } from "react-router";
 import Root from "../Root/Root";
 import Home from "../Pages/Home/Home";
-import ReadList from "../Pages/readList/ReadList";
+// import ReadList from "../Pages/readList/ReadList";
 import PagesToRead from "../Pages/pagesToRead/PagesToRead";
+import BookDetails from "../Pages/BookDetails/BookDetails";
+import ReadList from "../Pages/readList/ReadList";
 
  export const router = createBrowserRouter([
     {
       path: "/",
       Component: Root,
+      // errorElement:<p>Error</p>,
       children:[
         {
           index:true,
-           path:'/',
            loader: ()=> fetch('../booksData.json'),
-            Component:Home
+            Component:Home,
+            errorElement:<p>Error Home</p>,
+        
+          },
+          {
+            path:'/BookDetails/:id',
+            loader: ()=> fetch('../booksData.json'),
+            Component:BookDetails,
+            errorElement:<p>Error readList</p>
           },
           {
             path:'readList',
-            element:<ReadList></ReadList>
+            Component:ReadList
           },
           {
             path:'pagesToRead',
-            Component:PagesToRead
+            Component:PagesToRead,
+            errorElement:<p>Error pagesToRead</p>,
           }
       ]
     },

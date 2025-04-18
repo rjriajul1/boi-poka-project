@@ -3,17 +3,19 @@ import React from "react";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router";
 import Navbar from "../components/Header/Navbar";
-import Banner from "../components/Banner/Banner";
+
 
 
 const Root = () => {
   return (
-    <div className="md:max-w-10/12 p-2 mx-auto">
+    <div className="max-w-[1400px] mx-auto ">
      <Navbar></Navbar>
-      <Banner></Banner>
-      <Outlet>
+    <div className="p-3 md:p-0">
+    <Outlet>
        
-      </Outlet>
+       </Outlet>
+    </div>
+  
       <Footer></Footer>
       
     </div>
