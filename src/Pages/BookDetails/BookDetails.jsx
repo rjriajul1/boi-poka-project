@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link, useLoaderData, useParams } from 'react-router';
 import { addToLocalStorage } from '../../components/utilies/Localstorage';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+
+const MySwal = withReactContent(Swal)
 
 const BookDetails = () => {
     const books = useLoaderData();
@@ -13,6 +17,12 @@ const BookDetails = () => {
     );
 
     const handleReadButton = id =>{
+
+      MySwal.fire({
+      title: "Good job!",
+      text: "You clicked the Button!",
+      icon: "success"
+      })
          addToLocalStorage(id)
     }
   
