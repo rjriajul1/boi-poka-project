@@ -26,8 +26,6 @@ const BookDetails = () => {
          addToLocalStorage(id)
     }
   
-  
-  
     const {
       bookId,
       bookName,
