@@ -2,12 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-import { getItemLocalStorage } from "../../components/utilies/Localstorage";
+import { getItemLocalStorage, removeLocalStorage } from "../../components/utilies/Localstorage";
 import BookList from "../BookList/BookList";
+import ErrorMessage from "../../components/ErrorMessage";
 
 const ReadList = () => {
   const data = useLoaderData();
   const [readListBooks, setReadListBooks] = useState([]);
+  console.log(readListBooks);
   const [sort, setSort] = useState("");
   useEffect(() => {
     const storedData = getItemLocalStorage();
@@ -17,6 +19,16 @@ const ReadList = () => {
     );
     setReadListBooks(readBooks);
   }, [data]);
+
+  const handleRemoveBtn = id =>{
+
+setReadListBooks(readListBooks.filter(book=>book.bookId !== id))
+removeLocalStorage(id)
+
+   
+
+  }
+  if(readListBooks < 1) return <ErrorMessage/>
 
   const handleSort = (type) => {
     setSort(type);
@@ -63,7 +75,7 @@ const ReadList = () => {
         <TabPanel>
           <div>
             {readListBooks.map((book) => (
-              <BookList key={book.bookId} book={book}></BookList>
+              <BookList handleRemoveBtn={handleRemoveBtn} key={book.bookId} book={book}></BookList>
             ))}
           </div>
         </TabPanel>

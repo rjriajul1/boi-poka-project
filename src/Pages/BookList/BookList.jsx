@@ -2,10 +2,12 @@ import React from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FcBusinessman } from "react-icons/fc";
 import { MdContactPage } from "react-icons/md";
+import { Link } from "react-router";
 
 
-const BookList = ({ book }) => {
+const BookList = ({ book,handleRemoveBtn }) => {
   const {
+    bookId,
     bookName,
     publisher,
     author,
@@ -40,8 +42,10 @@ const BookList = ({ book }) => {
      <div className="flex gap-4 border-t border-gray-300  ">
       <h4 className="btn mt-2">Category: {category}</h4>
       <h4 className="btn mt-2">Category: {rating}</h4>
-      <button className="btn mt-2 btn-success">View Details</button>
+     <Link to={`/bookDetails/${bookId}`}> <button className="btn mt-2 btn-success">View Details</button></Link>
+     <button onClick={()=>handleRemoveBtn(bookId)} className="btn btn-error mt-2">Remove</button>
      </div>
+     
     </div>
   </div>
    </div>

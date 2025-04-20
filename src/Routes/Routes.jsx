@@ -7,12 +7,13 @@ import Home from "../Pages/Home/Home";
 import PagesToRead from "../Pages/pagesToRead/PagesToRead";
 import BookDetails from "../Pages/BookDetails/BookDetails";
 import ReadList from "../Pages/readList/ReadList";
+import ErrorMessage from "../components/ErrorMessage";
 
  export const router = createBrowserRouter([
     {
       path: "/",
       Component: Root,
-      // errorElement:<p>Error</p>,
+      errorElement: <ErrorMessage/>,
       children:[
         {
           index:true,
